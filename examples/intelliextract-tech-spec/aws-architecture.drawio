@@ -1,0 +1,299 @@
+<mxfile host="app.diagrams.net" agent="docgen" version="24.0.0">
+  <diagram name="IntelliExtract Architecture" id="intelliextract-arch">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="IntelliExtract — AWS Architecture (MVP)" style="text;html=1;fontSize=16;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- AWS Cloud boundary -->
+        <mxCell id="aws" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;stroke=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="50" width="1200" height="810" as="geometry" />
+        </mxCell>
+
+        <!-- VPC -->
+        <mxCell id="vpc" value="VPC (10.0.0.0/16)" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc2;stroke=#8C4FFF;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#8C4FFF;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="1120" height="730" as="geometry" />
+        </mxCell>
+
+        <!-- Public Subnet -->
+        <mxCell id="pubsub" value="Public Subnet (10.0.1.0/24)" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;stroke=#7AA116;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#248814;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="230" y="150" width="380" height="650" as="geometry" />
+        </mxCell>
+
+        <!-- Private Subnet -->
+        <mxCell id="privsub" value="Private Subnet (10.0.2.0/24)" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;stroke=#DD3522;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#DD3522;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="150" width="640" height="650" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PUBLIC SUBNET ==================== -->
+
+        <!-- API Gateway -->
+        <mxCell id="apigw" value="API Gateway" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="260" y="210" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ALB -->
+        <mxCell id="alb" value="Application&#xa;Load Balancer" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.application_load_balancer;" vertex="1" parent="1">
+          <mxGeometry x="390" y="210" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ECS Cluster label -->
+        <mxCell id="ecsgroup" value="ECS Cluster (Fargate)" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_ec2_instance_contents;stroke=#ED7100;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#ED7100;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="320" width="340" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- FastAPI Service -->
+        <mxCell id="fastapi" value="FastAPI&#xa;Service" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.ecs_task;" vertex="1" parent="1">
+          <mxGeometry x="290" y="370" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Extraction Worker -->
+        <mxCell id="worker" value="Extraction&#xa;Worker" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.ecs_task;" vertex="1" parent="1">
+          <mxGeometry x="430" y="370" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- CloudWatch -->
+        <mxCell id="cw" value="CloudWatch&#xa;Logs + Metrics" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.cloudwatch;" vertex="1" parent="1">
+          <mxGeometry x="340" y="570" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PRIVATE SUBNET ==================== -->
+
+        <!-- SQS Standard Queue -->
+        <mxCell id="sqs_std" value="SQS&#xa;Standard Queue" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="700" y="210" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- SQS Priority Queue -->
+        <mxCell id="sqs_pri" value="SQS&#xa;Priority Queue" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="820" y="210" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- SQS DLQ -->
+        <mxCell id="sqs_dlq" value="SQS&#xa;Dead Letter Queue" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="940" y="210" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- S3 Documents -->
+        <mxCell id="s3_docs" value="S3&#xa;Documents" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.bucket;" vertex="1" parent="1">
+          <mxGeometry x="700" y="380" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- RDS PostgreSQL -->
+        <mxCell id="rds" value="RDS&#xa;PostgreSQL" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.rds_postgresql_instance;" vertex="1" parent="1">
+          <mxGeometry x="870" y="380" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ElastiCache -->
+        <mxCell id="redis" value="ElastiCache&#xa;Redis (Rate Limit)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.elasticache_for_redis;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="380" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Secrets Manager -->
+        <mxCell id="secrets" value="Secrets&#xa;Manager" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.secrets_manager;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="380" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Lambda Webhook Sender -->
+        <mxCell id="lambda_wh" value="Lambda&#xa;Webhook Sender" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+          <mxGeometry x="700" y="560" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- SNS -->
+        <mxCell id="sns" value="SNS&#xa;Notifications" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="870" y="560" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- CloudFront -->
+        <mxCell id="cf" value="CloudFront&#xa;(Dashboard)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.cloudfront;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="560" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- S3 Static (Dashboard) -->
+        <mxCell id="s3_dash" value="S3&#xa;Dashboard SPA" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.bucket;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="560" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== EXTERNAL ==================== -->
+
+        <!-- Users -->
+        <mxCell id="users" value="API Clients" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Anthropic Claude -->
+        <mxCell id="claude" value="Anthropic&#xa;Claude API" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.general_saml_token;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Client Webhook -->
+        <mxCell id="client_wh" value="Client&#xa;Webhook" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.http_protocol;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONNECTIONS ==================== -->
+
+        <!-- Users -> API GW -->
+        <mxCell id="e1" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;fontColor=#666666;" edge="1" source="users" target="apigw" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- API GW -> ALB -->
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;" edge="1" source="apigw" target="alb" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ALB -> FastAPI -->
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;" edge="1" source="alb" target="fastapi" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FastAPI -> SQS Standard -->
+        <mxCell id="e4" value="enqueue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E7157B;fontSize=9;fontColor=#666666;" edge="1" source="fastapi" target="sqs_std" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="340" />
+              <mxPoint x="724" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- FastAPI -> SQS Priority -->
+        <mxCell id="e4b" value="express" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E7157B;dashed=1;fontSize=9;fontColor=#666666;" edge="1" source="fastapi" target="sqs_pri" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="310" />
+              <mxPoint x="844" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- SQS Standard -> DLQ -->
+        <mxCell id="e5" value="failed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#DD3522;dashed=1;fontSize=9;fontColor=#DD3522;" edge="1" source="sqs_std" target="sqs_dlq" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- SQS -> Worker (dequeue) -->
+        <mxCell id="e6" value="poll" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ED7100;fontSize=9;fontColor=#666666;" edge="1" source="sqs_std" target="worker" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="234" />
+              <mxPoint x="670" y="394" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Worker -> S3 -->
+        <mxCell id="e7" value="read doc" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3F8624;fontSize=9;fontColor=#666666;" edge="1" source="worker" target="s3_docs" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FastAPI -> S3 (upload) -->
+        <mxCell id="e7b" value="upload" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3F8624;fontSize=9;fontColor=#666666;" edge="1" source="fastapi" target="s3_docs" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="450" />
+              <mxPoint x="724" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Worker -> Claude -->
+        <mxCell id="e8" value="extract" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;fontColor=#666666;" edge="1" source="worker" target="claude" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="454" y="460" />
+              <mxPoint x="130" y="460" />
+              <mxPoint x="130" y="394" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Worker -> RDS -->
+        <mxCell id="e9" value="write result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C925D1;fontSize=9;fontColor=#666666;" edge="1" source="worker" target="rds" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="394" />
+              <mxPoint x="530" y="404" />
+              <mxPoint x="894" y="404" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- FastAPI -> RDS -->
+        <mxCell id="e9b" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C925D1;dashed=1;fontSize=9;fontColor=#666666;" edge="1" source="fastapi" target="rds" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="470" />
+              <mxPoint x="894" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- FastAPI -> Redis -->
+        <mxCell id="e10" value="rate limit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C925D1;dashed=1;fontSize=9;fontColor=#666666;" edge="1" source="fastapi" target="redis" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="490" />
+              <mxPoint x="1064" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Worker -> Lambda (trigger webhook) -->
+        <mxCell id="e11" value="trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ED7100;fontSize=9;fontColor=#666666;" edge="1" source="worker" target="lambda_wh" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="394" />
+              <mxPoint x="540" y="530" />
+              <mxPoint x="724" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Lambda -> Client Webhook -->
+        <mxCell id="e12" value="POST" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;fontColor=#666666;" edge="1" source="lambda_wh" target="client_wh" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Worker -> SNS (alerts) -->
+        <mxCell id="e13" value="alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E7157B;dashed=1;fontSize=9;fontColor=#666666;" edge="1" source="worker" target="sns" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="394" />
+              <mxPoint x="550" y="540" />
+              <mxPoint x="894" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- CloudFront -> S3 Dashboard -->
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;" edge="1" source="cf" target="s3_dash" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ECS -> CloudWatch -->
+        <mxCell id="e15" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E7157B;dashed=1;fontSize=9;fontColor=#666666;" edge="1" source="ecsgroup" target="cw" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Worker -> Secrets -->
+        <mxCell id="e16" value="API keys" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#DD344C;dashed=1;fontSize=9;fontColor=#666666;" edge="1" source="worker" target="secrets" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="394" />
+              <mxPoint x="560" y="520" />
+              <mxPoint x="1204" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
