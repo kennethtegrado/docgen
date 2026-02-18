@@ -114,9 +114,30 @@ def render_drawio_files(drawio_files: list[str], project_dir: Path,
     return results
 
 
+def resolve_image_paths(md_content: str, doc_dir: Path) -> str:
+    """Convert all relative image paths in markdown to absolute paths.
+
+    This is needed because Pandoc → WeasyPrint loses relative path context
+    when processing through intermediate HTML.
+    """
+    img_pattern = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
+
+    def make_absolute(match):
+        alt = match.group(1)
+        src = match.group(2)
+        if not src.startswith(("http://", "https://", "/")):
+            abs_path = (doc_dir / src).resolve()
+            if abs_path.exists():
+                return f"![{alt}]({abs_path})"
+        return match.group(0)
+
+    return img_pattern.sub(make_absolute, md_content)
+
+
 def process_diagrams(md_content: str, frontmatter: dict,
                      project_dir: Path,
-                     project_name: str | None = None) -> str:
+                     project_name: str | None = None,
+                     doc_dir: Path | None = None) -> str:
     """Process all diagrams in a document: mermaid blocks + draw.io files."""
     config = load_config(project_name)
     diagrams_config = frontmatter.get("diagrams", {})
@@ -124,13 +145,18 @@ def process_diagrams(md_content: str, frontmatter: dict,
     fmt = diagrams_config.get("export_format", config.get("default_export_format", "png"))
     export_dir = project_dir / "diagrams" / "exports"
 
-    # Render mermaid blocks inline
+    # Render mermaid blocks inline (already uses absolute paths)
     md_content = extract_and_render_mermaid(md_content, export_dir, theme=theme, fmt=fmt)
 
     # Render draw.io files
     drawio_files = diagrams_config.get("drawio_files", [])
     if drawio_files:
         render_drawio_files(drawio_files, project_dir, export_dir, fmt=fmt)
+
+    # Resolve all relative image paths to absolute for WeasyPrint
+    if doc_dir is None:
+        doc_dir = project_dir / "docs"
+    md_content = resolve_image_paths(md_content, doc_dir)
 
     return md_content
 

@@ -29,7 +29,10 @@ def export_pdf(doc_path: Path, output_path: Path | None = None) -> Path:
         output_path = output_dir / f"{doc_path.stem}.pdf"
 
     # Process diagrams (mermaid + draw.io)
-    processed_content = process_diagrams(post.content, metadata, project_dir, project_name)
+    processed_content = process_diagrams(
+        post.content, metadata, project_dir, project_name,
+        doc_dir=doc_path.parent,
+    )
 
     # Rebuild the full markdown with frontmatter
     processed_doc = f"---\n"
@@ -42,9 +45,10 @@ def export_pdf(doc_path: Path, output_path: Path | None = None) -> Path:
             processed_doc += f"{key}: {value}\n"
     processed_doc += f"---\n\n{processed_content}"
 
-    # Write processed markdown to temp file
+    # Write processed markdown to temp file in the same dir as the source doc
+    # so that relative image paths (e.g., ../diagrams/exports/) resolve correctly
     with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".md", delete=False, dir=str(project_dir)
+        mode="w", suffix=".md", delete=False, dir=str(doc_path.parent)
     ) as f:
         f.write(processed_doc)
         temp_md = Path(f.name)
