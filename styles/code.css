@@ -1,0 +1,48 @@
+/* Code blocks and syntax highlighting */
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+  font-size: 9pt;
+  background: #f1f5f9;
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  color: #1e293b;
+}
+
+pre {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 1em;
+  margin: 1em 0;
+  overflow-x: auto;
+  page-break-inside: avoid;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 8.5pt;
+}
+
+/* Pygments syntax highlighting */
+.sourceCode .kw { color: #7c3aed; font-weight: 600; }  /* Keyword */
+.sourceCode .dt { color: #0891b2; }                      /* DataType */
+.sourceCode .dv { color: #c026d3; }                      /* DecVal */
+.sourceCode .bn { color: #c026d3; }                      /* BaseN */
+.sourceCode .fl { color: #c026d3; }                      /* Float */
+.sourceCode .ch { color: #059669; }                      /* Char */
+.sourceCode .st { color: #059669; }                      /* String */
+.sourceCode .co { color: #94a3b8; font-style: italic; }  /* Comment */
+.sourceCode .ot { color: #2563eb; }                      /* Other */
+.sourceCode .fu { color: #2563eb; }                      /* Function */
+.sourceCode .er { color: #dc2626; font-weight: 600; }    /* Error */
+.sourceCode .al { color: #dc2626; }                      /* Alert */
+.sourceCode .va { color: #1e293b; }                      /* Variable */
+.sourceCode .cf { color: #7c3aed; font-weight: 600; }    /* ControlFlow */
+.sourceCode .op { color: #475569; }                      /* Operator */
+.sourceCode .bu { color: #0891b2; }                      /* BuiltIn */
+.sourceCode .at { color: #2563eb; }                      /* Attribute */
+.sourceCode .im { color: #7c3aed; }                      /* Import */

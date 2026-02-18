@@ -1,0 +1,48 @@
+/* Cover page styling */
+
+.cover-page {
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2cm 1cm;
+}
+
+.cover-page h1 {
+  font-size: 32pt;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.3em;
+  border-bottom: none;
+  line-height: 1.2;
+}
+
+.cover-page h2 {
+  font-size: 18pt;
+  font-weight: 400;
+  color: #2563eb;
+  border-bottom: none;
+  margin-bottom: 2em;
+}
+
+.cover-page p {
+  font-size: 11pt;
+  color: #555;
+  margin-bottom: 0.3em;
+}
+
+.cover-page strong {
+  color: #333;
+}
+
+/* Accent bar on cover */
+.cover-page::before {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #2563eb;
+  margin: 0 auto 2em;
+}
