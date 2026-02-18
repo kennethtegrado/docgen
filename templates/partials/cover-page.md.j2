@@ -1,0 +1,22 @@
+{% if sections.cover_page %}
+::: {.cover-page}
+
+# {{ title }}
+
+{% if subtitle %}
+## {{ subtitle }}
+{% endif %}
+
+{% if client %}
+**Prepared for:** {{ client }}
+{% endif %}
+
+**Author:** {{ author }}
+{% if company %}
+| **Company:** {{ company }}
+{% endif %}
+
+**Date:** {{ date }} | **Version:** {{ version }} | **Status:** {{ status }}
+
+:::
+{% endif %}

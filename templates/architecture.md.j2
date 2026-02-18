@@ -1,0 +1,287 @@
+---
+title: "{{ title }}"
+subtitle: "Architecture Document"
+doc_type: architecture
+author: "{{ author }}"
+date: "{{ date }}"
+version: "0.1.0"
+status: draft
+client: "{{ client }}"
+project: "{{ project }}"
+sections:
+  toc: true
+  cover_page: true
+  page_numbers: true
+  headers: true
+  executive_summary: true
+  revision_history: true
+  appendix: true
+  glossary: true
+  references: true
+  risk_assessment: true
+  timeline: false
+  budget: false
+  acceptance_criteria: false
+  architecture_diagrams: true
+revisions:
+  - version: "0.1.0"
+    date: "{{ date }}"
+    author: "{{ author }}"
+    description: "Initial draft"
+diagrams:
+  mermaid_theme: "{{ mermaid_theme }}"
+  export_format: "{{ export_format }}"
+  drawio_files: []
+export:
+  paper_size: "{{ paper_size }}"
+  margin: "{{ margin }}"
+  accent_color: "{{ accent_color }}"
+---
+
+{% include 'partials/cover-page.md.j2' %}
+
+{% include 'partials/toc-placeholder.md.j2' %}
+
+{% include 'partials/revision-history.md.j2' %}
+
+{% if sections.executive_summary %}
+## Executive Summary
+
+<!-- High-level overview of the architecture and key decisions -->
+
+{% endif %}
+
+## 1. Introduction
+
+### 1.1 Purpose
+
+<!-- Why this architecture document exists -->
+
+### 1.2 Scope
+
+<!-- Systems and components covered -->
+
+### 1.3 Audience
+
+<!-- Who should read this document -->
+
+## 2. Context
+
+### 2.1 Business Context
+
+<!-- Business drivers and constraints -->
+
+### 2.2 Technical Context
+
+<!-- Existing systems, integrations, and technical constraints -->
+
+{% if sections.architecture_diagrams %}
+### 2.3 System Context Diagram (C4 Level 1)
+
+```mermaid
+graph TB
+    User[fa:fa-user User] --> System[System Name]
+    System --> ExtA[External System A]
+    System --> ExtB[External System B]
+
+    style System fill:#2563eb,color:#fff
+```
+{% endif %}
+
+## 3. Architecture Overview
+
+### 3.1 High-Level Architecture
+
+<!-- Description of the overall architecture style and key patterns -->
+
+{% if sections.architecture_diagrams %}
+### 3.2 Container Diagram (C4 Level 2)
+
+```mermaid
+graph TB
+    subgraph System
+        WebApp[Web Application<br/>React]
+        API[API Server<br/>Node.js]
+        DB[(Database<br/>PostgreSQL)]
+        Cache[(Cache<br/>Redis)]
+    end
+
+    WebApp --> API
+    API --> DB
+    API --> Cache
+
+    style WebApp fill:#2563eb,color:#fff
+    style API fill:#2563eb,color:#fff
+```
+{% endif %}
+
+## 4. Component Design
+
+### 4.1 Component Overview
+
+<!-- Description of major components and their responsibilities -->
+
+{% if sections.architecture_diagrams %}
+### 4.2 Component Diagram (C4 Level 3)
+
+```mermaid
+graph TB
+    subgraph API Server
+        Router[Router]
+        Auth[Auth Middleware]
+        Controllers[Controllers]
+        Services[Services]
+        Repos[Repositories]
+    end
+
+    Router --> Auth
+    Auth --> Controllers
+    Controllers --> Services
+    Services --> Repos
+```
+{% endif %}
+
+### 4.3 Component Details
+
+#### Component A
+
+- **Responsibility:**
+- **Technology:**
+- **Interfaces:**
+
+#### Component B
+
+- **Responsibility:**
+- **Technology:**
+- **Interfaces:**
+
+## 5. Data Architecture
+
+### 5.1 Data Model
+
+<!-- Core entities and relationships -->
+
+{% if sections.architecture_diagrams %}
+```mermaid
+erDiagram
+    ENTITY_A ||--o{ ENTITY_B : "has many"
+    ENTITY_B }|--|| ENTITY_C : "belongs to"
+```
+{% endif %}
+
+### 5.2 Data Flow
+
+<!-- How data moves through the system -->
+
+{% if sections.architecture_diagrams %}
+```mermaid
+sequenceDiagram
+    participant Client
+    participant API
+    participant Service
+    participant DB
+
+    Client->>API: Request
+    API->>Service: Process
+    Service->>DB: Query
+    DB-->>Service: Result
+    Service-->>API: Response
+    API-->>Client: Response
+```
+{% endif %}
+
+### 5.3 Data Storage
+
+<!-- Database choices, partitioning, replication, backup strategy -->
+
+## 6. Infrastructure & Deployment
+
+### 6.1 Infrastructure Overview
+
+<!-- Cloud provider, regions, environments -->
+
+{% if sections.architecture_diagrams %}
+```mermaid
+graph TB
+    subgraph Production
+        LB[Load Balancer]
+        subgraph App Tier
+            App1[App Server 1]
+            App2[App Server 2]
+        end
+        subgraph Data Tier
+            DB_Primary[(Primary DB)]
+            DB_Replica[(Replica DB)]
+        end
+    end
+
+    LB --> App1
+    LB --> App2
+    App1 --> DB_Primary
+    App2 --> DB_Primary
+    DB_Primary --> DB_Replica
+```
+{% endif %}
+
+### 6.2 Deployment Strategy
+
+<!-- CI/CD pipeline, deployment process, rollback -->
+
+### 6.3 Environments
+
+| Environment | Purpose | URL |
+|-------------|---------|-----|
+| Development | | |
+| Staging | | |
+| Production | | |
+
+## 7. Cross-Cutting Concerns
+
+### 7.1 Security
+
+<!-- Authentication, authorization, encryption, secrets management -->
+
+### 7.2 Observability
+
+<!-- Logging, metrics, tracing, alerting -->
+
+### 7.3 Performance
+
+<!-- Performance targets, caching strategy, scaling approach -->
+
+### 7.4 Reliability
+
+<!-- SLAs, fault tolerance, disaster recovery -->
+
+## 8. Architecture Decisions
+
+### ADR-001: [Decision Title]
+
+- **Status:** Accepted
+- **Context:** <!-- Why was this decision needed? -->
+- **Decision:** <!-- What was decided? -->
+- **Consequences:** <!-- What are the trade-offs? -->
+
+{% if sections.risk_assessment %}
+## 9. Risks & Technical Debt
+
+| Risk / Debt Item | Severity | Likelihood | Mitigation / Plan |
+|-----------------|----------|-----------|-------------------|
+|                 |          |           |                   |
+{% endif %}
+
+{% if sections.glossary %}
+## Glossary
+
+| Term | Definition |
+|------|-----------|
+|      |           |
+{% endif %}
+
+{% if sections.references %}
+## References
+
+1.
+{% endif %}
+
+{% include 'partials/appendix.md.j2' %}

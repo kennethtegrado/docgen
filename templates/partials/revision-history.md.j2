@@ -1,0 +1,10 @@
+{% if sections.revision_history and revisions %}
+## Revision History
+
+| Version | Date | Author | Description |
+|---------|------|--------|-------------|
+{% for rev in revisions %}
+| {{ rev.version }} | {{ rev.date }} | {{ rev.author }} | {{ rev.description }} |
+{% endfor %}
+
+{% endif %}

@@ -1,0 +1,168 @@
+---
+title: "{{ title }}"
+subtitle: "Project Proposal"
+doc_type: proposal
+author: "{{ author }}"
+date: "{{ date }}"
+version: "0.1.0"
+status: draft
+client: "{{ client }}"
+project: "{{ project }}"
+sections:
+  toc: true
+  cover_page: true
+  page_numbers: true
+  headers: true
+  executive_summary: true
+  revision_history: true
+  appendix: true
+  glossary: false
+  references: true
+  risk_assessment: true
+  timeline: true
+  budget: true
+  acceptance_criteria: true
+  architecture_diagrams: false
+revisions:
+  - version: "0.1.0"
+    date: "{{ date }}"
+    author: "{{ author }}"
+    description: "Initial draft"
+diagrams:
+  mermaid_theme: "{{ mermaid_theme }}"
+  export_format: "{{ export_format }}"
+  drawio_files: []
+export:
+  paper_size: "{{ paper_size }}"
+  margin: "{{ margin }}"
+  accent_color: "{{ accent_color }}"
+---
+
+{% include 'partials/cover-page.md.j2' %}
+
+{% include 'partials/toc-placeholder.md.j2' %}
+
+{% include 'partials/revision-history.md.j2' %}
+
+{% if sections.executive_summary %}
+## Executive Summary
+
+<!-- Concise overview: what you propose, why, and the expected outcome -->
+
+{% endif %}
+
+## 1. Problem Statement
+
+<!-- What problem does the client face? What is the current situation? -->
+
+## 2. Proposed Solution
+
+### 2.1 Overview
+
+<!-- High-level description of the proposed solution -->
+
+### 2.2 Key Features
+
+<!-- Bullet list of main deliverables and features -->
+
+1.
+
+### 2.3 Technical Approach
+
+<!-- How you plan to build it — technologies, architecture, methodology -->
+
+## 3. Scope of Work
+
+### 3.1 In Scope
+
+<!-- Explicitly list what is included -->
+
+1.
+
+### 3.2 Out of Scope
+
+<!-- Explicitly list what is NOT included -->
+
+1.
+
+### 3.3 Assumptions
+
+<!-- List key assumptions -->
+
+1.
+
+## 4. Deliverables
+
+| # | Deliverable | Description | Format |
+|---|------------|-------------|--------|
+| 1 |            |             |        |
+
+{% if sections.timeline %}
+## 5. Timeline & Milestones
+
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat YYYY-MM-DD
+    section Phase 1
+    Discovery & Planning: 2026-01-01, 14d
+    section Phase 2
+    Development: 2026-01-15, 30d
+    section Phase 3
+    Testing & Launch: 2026-02-15, 14d
+```
+
+| Phase | Duration | Milestones |
+|-------|----------|-----------|
+|       |          |           |
+{% endif %}
+
+{% if sections.budget %}
+## 6. Investment
+
+### 6.1 Cost Breakdown
+
+| Item | Hours | Rate | Total |
+|------|-------|------|-------|
+|      |       |      |       |
+| **Total** | | | **$0** |
+
+### 6.2 Payment Terms
+
+<!-- Payment schedule: e.g., 50% upfront, 25% at milestone, 25% on completion -->
+
+{% endif %}
+
+{% if sections.risk_assessment %}
+## 7. Risks & Mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+|      |           |        |            |
+{% endif %}
+
+{% if sections.acceptance_criteria %}
+## 8. Acceptance Criteria
+
+<!-- How does the client verify the work is complete? -->
+
+- [ ]
+{% endif %}
+
+## 9. Why Us
+
+<!-- Your qualifications, relevant experience, and unique advantages -->
+
+## 10. Next Steps
+
+<!-- What happens after the proposal is accepted? -->
+
+1.
+
+{% if sections.references %}
+## References
+
+1.
+{% endif %}
+
+{% include 'partials/appendix.md.j2' %}
