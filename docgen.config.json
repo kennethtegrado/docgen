@@ -1,0 +1,11 @@
+{
+  "author": "Your Name",
+  "company": "",
+  "email": "",
+  "default_paper_size": "A4",
+  "default_margin": "2cm",
+  "accent_color": "#2563eb",
+  "font_family": "Inter, system-ui, sans-serif",
+  "default_export_format": "png",
+  "mermaid_theme": "default"
+}

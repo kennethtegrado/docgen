@@ -1,0 +1,24 @@
+[project]
+name = "docgen"
+version = "0.1.0"
+description = "Document generation tool for tech specs, proposals, SOWs, and architecture docs. Built for Claude Code."
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+keywords = ["document-generation", "pdf", "templates", "tech-specs", "claude-code"]
+dependencies = [
+    "Jinja2>=3.1",
+    "PyYAML>=6.0",
+    "python-frontmatter>=1.1",
+    "WeasyPrint>=62.0",
+    "Pygments>=2.17",
+]
+
+[project.urls]
+Homepage = "https://github.com/renztegrado/docgen"
+Repository = "https://github.com/renztegrado/docgen"
+Issues = "https://github.com/renztegrado/docgen/issues"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
